@@ -1,4 +1,4 @@
-# Best-Recipes
+# Best Recipes
 
 ### Introduction
 
@@ -19,3 +19,20 @@ We first clean the data and extract the relevant information. This involves merg
 Now that we have our single DataFrame, let's make the features of interest easily accessible. First, notice that the dates in the date column are strings, which is tedious to perform operations on. Instead, we convert all of the dates from string to datetime which makes them much easier to deal with later. Second, we also notice that columns like tags, nutrition, steps and ingredients look like lists, but are actually strings. This is also quite annoying to use in data analysis, so we convert those strings to lists in order to access their items easier. Since we know we'll want to investigate nutrition later, we separate each item in the list of nutrition facts into its own column, where each value is a float. Let's look at what the nutrition columns look like.
 
 <iframe src="plots/ratings_histogram.html" width=800 height=600 frameBorder=0></iframe>
+
+<iframe src="plots/minutes_histogram.html" width=800 height=600 frameBorder=0></iframe>
+
+<iframe src="plots/scatter_nsteps_rating.html" width=800 height=600 frameBorder=0></iframe>
+
+<iframe src="plots/scatter_calories_rating.html.html" width=800 height=600 frameBorder=0></iframe>
+
+
+
+
+
+
+
+
+
+
+
