@@ -10,6 +10,8 @@ Using <a href="https://www.kaggle.com/datasets/shuyangli94/food-com-recipes-and-
 
 We're interested in classifying recipes containing IHQ in their titles to determine if this has a correlation with recipe ratings. Within this investigation we hope to discover some kind of relationship between IHQ and other recipe features. That is, does including superlative and self-praising language in a recipe title tell you anything about the recipe itself? In order to research this question and the more general relationship surrounding it, we'll first take a look at the ratings. Once we understand the distribution of ratings and its relationship with other features such as number of steps and ingredients, cooktime and nutrition, we can compare how IHQ fits into the equation.
 
+
+
 ### Cleaning and Exploratory Data Analysis
 
 ##### Data Wrangling
@@ -17,6 +19,7 @@ We first clean the data and extract the relevant information. This involves merg
 
 ##### Data Extraction
 Now that we have our single DataFrame, let's make the features of interest easily accessible. First, notice that the dates in the date column are strings, which is tedious to perform operations on. Instead, we convert all of the dates from string to datetime which makes them much easier to deal with later. Second, we also notice that columns like tags, nutrition, steps and ingredients look like lists, but are actually strings. This is also quite annoying to use in data analysis, so we convert those strings to lists in order to access their items easier. Since we know we'll want to investigate nutrition later, we separate each item in the list of nutrition facts into its own column, where each value is a float. Let's look at what the nutrition columns look like.
+
 
 
 ### Univariate Analysis
@@ -30,6 +33,7 @@ Originally, it would've been insightful to analyze a boxchart instead of histogr
 <iframe src="plots/minutes_histogram.html" width=800 height=600 frameBorder=0></iframe>
 
 
+
 ### Bivariate Analysis
 
 ##### Rating vs Number of Steps in Recipe
@@ -39,6 +43,20 @@ We can see many recipes along the integer intervals of the x axis since many rec
 ##### Rating vs Number of Calories in Recipe
 We can see many recipes along the integer intervals of the x axis since many recipes only have one or a couple reviews that are all the same. There is also a slight upward trend.
 <iframe src="plots/scatter_calories_rating.html.html" width=800 height=600 frameBorder=0></iframe>
+
+
+
+### Analysis of Aggregated Data
+
+##### Recipe Mintues over Time
+Let's see how ratings have changed over the years the get a better sense of any time-related trends. Before analyzing the minutes per recipe, we first get rid of outliers. We define outliers as recipes that take more than 24 hours to make (less than 1% of all recipes). We initially look at a scatterplot of recipe minutes over time. This plot reveals not only that the number of recipes has decreased over time, but it looks as if the average minutes of the recipes also decreases over time. Notice the horizontal lines in the scatterplot, which is due to recipes rounding the number of minutes of their recipe to the nearest group of 10 or 30 minutes. The table below the plot shows that the number of recipes per year in fact decreases dramatically from 2008 to 2018.
+<iframe src="scatter_minutes_date.html" width=800 height=600 frameBorder=0></iframe>
+
+##### Average Recipe Minutes per Year
+print(aggregated.to_markdown(index=True))
+Again, as you can see, the number of recipes per year in the dataset has greatly decreased since 2008. This is a little odd because overall production of content on the internet has grown over time. Perhaps the data somehow doesn't include all of the recipes. Before we investigate missingness, let's continue with aggregation investigation. When we aggregate the data by year, then a very different pattern emerges. Instead of a slow descent of recipe times over the years, we see most years have an average recipe time of 100 minutes except two years. This interesting aggregation shows that 2011 and 2016 were years with much higher average recipe times than any of their neighbors. Needless to say, the patterns of recipe times are hard to describe and even more difficult to predict.
+<iframe src="line_minutes_year.html" width=800 height=600 frameBorder=0></iframe>
+
 
 
 ### Assessment of Rating Missingness
