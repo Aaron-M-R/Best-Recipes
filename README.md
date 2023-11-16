@@ -18,14 +18,30 @@ We first clean the data and extract the relevant information. This involves merg
 ##### Data Extraction
 Now that we have our single DataFrame, let's make the features of interest easily accessible. First, notice that the dates in the date column are strings, which is tedious to perform operations on. Instead, we convert all of the dates from string to datetime which makes them much easier to deal with later. Second, we also notice that columns like tags, nutrition, steps and ingredients look like lists, but are actually strings. This is also quite annoying to use in data analysis, so we convert those strings to lists in order to access their items easier. Since we know we'll want to investigate nutrition later, we separate each item in the list of nutrition facts into its own column, where each value is a float. Let's look at what the nutrition columns look like.
 
+
+### Univariate Analysis
+
+##### Ratings Histogram
+Here we made a histogram of ratings to show the distribution. As you can see, it's quite skewed (left) since most recipes have only 5/5 reviews. We'll be careful in the future, remembering that this distribution is far from uniform or even normal.
 <iframe src="plots/ratings_histogram.html" width=800 height=600 frameBorder=0></iframe>
 
+##### Minutes Histogram
+Originally, it would've been insightful to analyze a boxchart instead of histogram of recipe minutes since boxcharts display outliers more clearly. Unfortunately, some outliers are so large (over a million minutes!) that this ruins the visualization. Instead, we've removed times over 12 hours (less than 1% of recipes) in order to better understand the distribution of recipe times. Now that there are fewer outliers, it makes more sense to draw a histogram. This histogram is still quite skewed, so it seems most recipes take less than an hour to make, with a peak from around 20-40 minutes.
 <iframe src="plots/minutes_histogram.html" width=800 height=600 frameBorder=0></iframe>
 
+
+### Bivariate Analysis
+
+##### Rating vs Number of Steps in Recipe
+We can see many recipes along the integer intervals of the x axis since many recipes only have one or a couple reviews that are all the same. There is also a slight upward trend.
 <iframe src="plots/scatter_nsteps_rating.html" width=800 height=600 frameBorder=0></iframe>
 
+##### Rating vs Number of Calories in Recipe
+We can see many recipes along the integer intervals of the x axis since many recipes only have one or a couple reviews that are all the same. There is also a slight upward trend.
 <iframe src="plots/scatter_calories_rating.html.html" width=800 height=600 frameBorder=0></iframe>
 
+
+### Assessment of Rating Missingness
 There are 2 columns with more than 1 missing value, and the only column that's missing more than 100 values is the rating column. The rows that are missing rating are recipes that never got a comment/rating. Although we could easily argue that rating missingness is dependent on the number of comments (missing at random), we want to investigate further. Are there other features in our dataset that could influence the missingness of ratings? Specifically, is rating missingness dependent on nutrition? Perhaps recipes that are designed based on certain nutrition are less popular. This is reasonable since people often cook without thinking about nutrition facts like protein. Let's see if missingness of the recipe ratings depends on the percent daily value of protein in a recipe.
 
 In order to test this theory, we will run a permutation test with 10,000 trials and a p-value of .05. If less than 5% of the trials in the permutation test contain test statistics equal to or greater than the observed test statistic, we can reject the null hypothesis.
