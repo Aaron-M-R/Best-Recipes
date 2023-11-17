@@ -50,12 +50,12 @@ We can see many recipes along the integer intervals of the x axis since many rec
 
 ##### Recipe Mintues over Time
 Let's see how ratings have changed over the years the get a better sense of any time-related trends. Before analyzing the minutes per recipe, we first get rid of outliers. We define outliers as recipes that take more than 24 hours to make (less than 1% of all recipes). We initially look at a scatterplot of recipe minutes over time. This plot reveals not only that the number of recipes has decreased over time, but it looks as if the average minutes of the recipes also decreases over time. Notice the horizontal lines in the scatterplot, which is due to recipes rounding the number of minutes of their recipe to the nearest group of 10 or 30 minutes. The table below the plot shows that the number of recipes per year in fact decreases dramatically from 2008 to 2018.
-<iframe src="scatter_minutes_date.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="plots/scatter_minutes_date.html" width=800 height=600 frameBorder=0></iframe>
 
 ##### Average Recipe Minutes per Year
 print(aggregated.to_markdown(index=True))
 Again, as you can see, the number of recipes per year in the dataset has greatly decreased since 2008. This is a little odd because overall production of content on the internet has grown over time. Perhaps the data somehow doesn't include all of the recipes. Before we investigate missingness, let's continue with aggregation investigation. When we aggregate the data by year, then a very different pattern emerges. Instead of a slow descent of recipe times over the years, we see most years have an average recipe time of 100 minutes except two years. This interesting aggregation shows that 2011 and 2016 were years with much higher average recipe times than any of their neighbors. Needless to say, the patterns of recipe times are hard to describe and even more difficult to predict.
-<iframe src="line_minutes_year.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="plots/line_minutes_year.html" width=800 height=600 frameBorder=0></iframe>
 
 
 
