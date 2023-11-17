@@ -36,6 +36,7 @@ Originally, it would've been insightful to analyze a boxchart instead of histogr
 
 ### Bivariate Analysis
 
+
 ##### Rating vs Number of Steps in Recipe
 We can see many recipes along the integer intervals of the x axis since many recipes only have one or a couple reviews that are all the same. There is also a slight upward trend.
 <iframe src="plots/scatter_nsteps_rating.html" width=800 height=600 frameBorder=0></iframe>
