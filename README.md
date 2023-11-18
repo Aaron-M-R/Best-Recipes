@@ -43,7 +43,7 @@ We can see many recipes along the integer intervals of the x axis since many rec
 
 ##### Rating vs Number of Calories in Recipe
 We can see many recipes along the integer intervals of the x axis since many recipes only have one or a couple reviews that are all the same. There is also a slight upward trend.
-<iframe src="plots/scatter_calories_rating.html.html" width=800 height=600 frameBorder=0></iframe>
+<iframe src="plots/scatter_calories_rating.html" width=800 height=600 frameBorder=0></iframe>
 
 
 
